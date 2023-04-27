@@ -131,7 +131,6 @@
 .game2 {
     border: 3px dashed #282c34;
     background-color: #a0e575;
-    height:fit-content;
     padding: 5px;
     border-radius: 10px;
     width: 7vw;
@@ -139,6 +138,7 @@
     font-size: 1.4vw;
     font-family: Player2;
     color: #0c5594;
+    z-index: 1;
     min-inline-size: fit-content;
     margin-right: 20px;
 }
@@ -203,7 +203,7 @@
 
 .wrapper {
     width: 60dvw;
-    height: 50vh;
+    min-height: 54vh;
     font-family:'Cascadia Code';
     padding: 30px;
     background: #0f172a;
@@ -239,7 +239,7 @@
     font-size: 1.74vw;
     text-align: justify;
     letter-spacing: 1px;
-    height: 28vh;
+    min-height: 33vh;
 }
 
     .typing-text p span {
