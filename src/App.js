@@ -286,7 +286,7 @@ function App() {
                         <div className="dropdown">
                         <span style={{display:'inline-flex'}}>
                             <button className="dropbtn game2" onClick={toggleDropdown}>Games</button>
-                            <button className="game2" onClick={openLeaderBoard}>Leaderboard</button>
+                            <button className="game2" onClick={openLeaderBoard} style={{ backgroundColor : leadopenFlag ? '#dd4a4a' : '#a0e575', color: leadopenFlag ? '#f5f5f5' : '#0c5594' }} >{leadopenFlag ? '✕ Close' : 'Leaderboard'}</button>
                         </span>
                             {dropdownOpen && (
                                 <div className="dropdown-content">
@@ -613,7 +613,7 @@ function App2() {
                         <div className="dropdown">
                         <span style={{display:'inline-flex'}}>
                             <button className="dropbtn game2" onClick={toggleDropdown}>Games</button>
-                            <button className="game2" onClick={openLeaderBoard}>Leaderboard</button>
+                            <button className="game2" onClick={openLeaderBoard} style={{ backgroundColor : leadopenFlag ? '#dd4a4a' : '#a0e575', color: leadopenFlag ? '#f5f5f5' : '#0c5594' }} >{leadopenFlag ? '✕ Close' : 'Leaderboard'}</button>
                         </span>  
                             {dropdownOpen && (
                                 <div className="dropdown-content">
@@ -1004,7 +1004,7 @@ function App3() {
                         <div className="dropdown">
                         <span style={{display:'inline-flex'}}>
                             <button className="dropbtn game2" onClick={toggleDropdown}>Games</button>
-                            <button className="game2" onClick={openLeaderBoard}>Leaderboard</button>
+                            <button className="game2" onClick={openLeaderBoard} style={{ backgroundColor : leadopenFlag ? '#dd4a4a' : '#a0e575', color: leadopenFlag ? '#f5f5f5' : '#0c5594' }} >{leadopenFlag ? '✕ Close' : 'Leaderboard'}</button>
                         </span> 
                             {dropdownOpen && (
                                 <div className="dropdown-content">
@@ -1539,7 +1539,7 @@ useEffect(() => {
                 <div className="Top-Bar">
                     <span style={{display:'inline-flex'}}>
                         <button className="dropbtn game2" onClick={toggleDropdown}>Games</button>
-                        <button className="game2" onClick={openLeaderBoard}>Leaderboard</button>
+                        <button className="game2" onClick={openLeaderBoard} style={{ backgroundColor : leadopenFlag ? '#dd4a4a' : '#a0e575', color: leadopenFlag ? '#f5f5f5' : '#0c5594' }} >{leadopenFlag ? '✕ Close' : 'Leaderboard'}</button>
                     </span>
                         {dropdownOpen && (
                             <div className="dropdown-content">
