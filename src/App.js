@@ -41,6 +41,21 @@ function App() {
     const [existingPlayers , setExistingPlayers] = useLocalStorage('hitplayers',[]);
     const [showpopup, setShowPopUp] = useState(false);
 
+    useEffect(() => {
+        const vertical = document.querySelector("#vertical");
+        const horizontal = document.querySelector("#horizontal");
+    
+        const handleMouseMove = (e) => {
+          vertical.style.transform = `translateX(${e.clientX}px)`;
+          horizontal.style.transform = `translateY(${e.clientY}px)`;
+        };
+    
+        document.addEventListener("mousemove", handleMouseMove);
+    
+        return () => {
+          document.removeEventListener("mousemove", handleMouseMove);
+        };
+      }, []);
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
     };
@@ -111,8 +126,21 @@ function App() {
     useEffect(() => {
         getPosition();
         const handleResize = () => {
-            getPosition();
-        };
+            const maxX = window.innerWidth - btnRef.current.offsetWidth;
+            const maxY = window.innerHeight - btnRef.current.offsetHeight;
+        
+            let posX = (btnRef.current.offsetLeft / window.innerWidth) * maxX;
+            let posY = (btnRef.current.offsetTop / window.innerHeight) * maxY;
+        
+            // Check if new position is outside of screen bounds
+            if (posX < 0) posX = 0;
+            if (posY < 0) posY = 0;
+            if (posX > maxX) posX = maxX;
+            if (posY > maxY) posY = maxY;
+        
+            btnRef.current.style.top = posY + "px";
+            btnRef.current.style.left = posX + "px";
+          };
         window.addEventListener("resize", handleResize);
         return () => {
             window.removeEventListener("resize", handleResize);
@@ -122,8 +150,8 @@ function App() {
         const maxX = window.innerWidth - btnRef.current.offsetWidth;
         const maxY = window.innerHeight - btnRef.current.offsetHeight;
 
-        let posX = Math.floor(Math.random() * maxX);
-        let posY = Math.floor(Math.random() * maxY);
+        let posX = Math.random() * maxX;
+        let posY = Math.random() * maxY;
 
         // Check if new position is outside of screen bounds
         if (posX < 0) posX = 0;
@@ -137,10 +165,11 @@ function App() {
     useEffect(() => {
         const button = btnRef.current;
         button.addEventListener("resize", getPosition);
+      
         return () => {
-            button.removeEventListener("resize", getPosition);
+          button.removeEventListener("resize", getPosition);
         }
-    }, [btnRef.current]);
+      }, [btnRef.current]);
     const bHoles = [
         bHole1,
         bHole2,
@@ -158,12 +187,10 @@ function App() {
         posX = Math.min(Math.max(posX, 20), maxX);
         posY = Math.min(Math.max(posY, 80), maxY);
 
-        requestAnimationFrame(() => {
-            btnRef.current.style.top = `${posY}px`;
-            btnRef.current.style.left = `${posX}px`;
-        });
+        btnRef.current.style.top = `${posY}px`;
+        btnRef.current.style.left = `${posX}px`;
 
-        if (visible===true) {
+        if (visible) {
             document.querySelector('.buttonT').style.position = 'static';
         }
         else {
@@ -300,6 +327,10 @@ function App() {
                         <label id="counter">| Score {count} | Time {timer}s</label>
                     </span>
                 </div>
+                <div>
+                    <div className="crosslines" id="vertical"></div>
+                    <div className="crosslines" id="horizontal"></div>
+                </div>
                 {leadopenFlag && (
                 <div id="rgb">
                         <div id="popup">
@@ -419,6 +450,21 @@ function App2() {
         const y = btnRef.current.offsetTop;
         setY(y);
     };
+    useEffect(() => {
+        const vertical = document.querySelector("#vertical");
+        const horizontal = document.querySelector("#horizontal");
+    
+        const handleMouseMove = (e) => {
+          vertical.style.transform = `translateX(${e.clientX}px)`;
+          horizontal.style.transform = `translateY(${e.clientY}px)`;
+        };
+    
+        document.addEventListener("mousemove", handleMouseMove);
+    
+        return () => {
+          document.removeEventListener("mousemove", handleMouseMove);
+        };
+      }, []);
     useEffect(() => {
         getPosition();
         const handleResize = () => {
@@ -632,6 +678,10 @@ function App2() {
                         </label>
                     </span>
                 </div>
+                <div>
+                    <div className="crosslines" id="vertical"></div>
+                    <div className="crosslines" id="horizontal"></div>
+                </div>
                 {leadopenFlag && (
                 <div id="rgb">
                         <div id="popup">
@@ -739,6 +789,21 @@ function App3() {
             total, hours, minutes, seconds
         };
     }
+    useEffect(() => {
+        const vertical = document.querySelector("#vertical");
+        const horizontal = document.querySelector("#horizontal");
+    
+        const handleMouseMove = (e) => {
+          vertical.style.transform = `translateX(${e.clientX}px)`;
+          horizontal.style.transform = `translateY(${e.clientY}px)`;
+        };
+    
+        document.addEventListener("mousemove", handleMouseMove);
+    
+        return () => {
+          document.removeEventListener("mousemove", handleMouseMove);
+        };
+      }, []);
     const startTimer = (e) => {
         let { total, hours, minutes, seconds }
             = getTimeRemaining(e);
@@ -1017,6 +1082,10 @@ function App3() {
                         <label style={{ fontSize: '15px', marginRight: '20px' }}>Highscore:{highscoreGame}</label>
                         <label id="counter">| Score {count} | Time {timer}</label>
                     </span>
+                </div>
+                <div>
+                    <div className="crosslines" id="vertical"></div>
+                    <div className="crosslines" id="horizontal"></div>
                 </div>
                 {leadopenFlag && (
                 <div id="rgb">

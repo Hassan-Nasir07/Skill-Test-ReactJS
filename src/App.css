@@ -1,3 +1,4 @@
+
 * {
     cursor: url('./images/crosshair.png') 37 37, crosshair;
     font-family:'Cascadia Code';
@@ -138,7 +139,7 @@
     font-size: 1.4vw;
     font-family: Player2;
     color: #0c5594;
-    z-index: 1;
+    position: relative;
     min-inline-size: fit-content;
     margin-right: 20px;
 }
@@ -713,4 +714,28 @@ li:not(:first-child) span {
     overflow: scroll;
     max-height: 33vh;
     overflow-x: hidden;
+  }
+  
+ .crosslines {
+    -moz-user-select: none;
+    -ms-user-select: none;
+    pointer-events: none;
+    user-select: none;
+    border-top: 1px dashed limegreen;
+    border-left: 1px dashed limegreen;
+    position: fixed;
+    box-shadow:0 0 25px 2px limegreen;
+    top: 0%;
+    left: 0%;
+    z-index: 3;
+  }
+  
+  #vertical {
+    height: 100%;
+    width:1px;
+  }
+  
+  #horizontal {
+    width:100%;
+    height:1px;
   }
