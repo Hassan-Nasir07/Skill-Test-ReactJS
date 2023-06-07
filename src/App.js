@@ -1504,7 +1504,7 @@ useEffect(() => {
             SetCongratsText("Good Work");
             SetMedalName("You won a Silver Medal");
             setShowPopUp(true);
-        } else if ((wpm >= 40 && wpm < 46) && accuracy >= 80 ) {
+        } else if ( wpm >= 40 && accuracy >= 80 ) {
             // Gold Medal
             setFailFlag(false);
             setMedalImage(gold);
